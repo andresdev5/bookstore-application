@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Service.Controllers.AuthorsController">
+    <Position X="2.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAACAAAAAAAAgAABAAAgAIBAAAAAAAAA=</HashCode>
+      <FileName>Controllers\AuthorsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Service.Controllers.BooksController">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBBAAAAAAAAAAAAAACEAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\BooksController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Service.Controllers.GenresController">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAiAAAAAAAAEAAAAAAAAAAAQAAAEAAAA=</HashCode>
+      <FileName>Controllers\GenresController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Service.Controllers.LoansController">
+    <Position X="6.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAACACBACIAAAAAAAAAAAABAAAAAAAAAAAEA=</HashCode>
+      <FileName>Controllers\LoansController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Service.Services.IBookService">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAAAEAAAAAAAAAAACEAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\IBookService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Service.Services.IAuthorService">
+    <Position X="2.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABCAAACAAAAAAAAAAAAAAAgAIBAAAAAAAAA=</HashCode>
+      <FileName>Services\IAuthorService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Service.Services.IGenreService">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAiAAAAAAAAEAAAgAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>Services\IGenreService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Service.Services.ILoanService">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAQAAAQBAAABAAAACAAAA=</HashCode>
+      <FileName>Services\ILoanService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
