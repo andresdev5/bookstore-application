@@ -11,7 +11,7 @@
 
 <div class="container" style="max-width: 900px">
 	<h2>@(book?.Id > 0 ? "Editar libro" : "Agregar Libro")</h2>
-	<form asp-action="DoLendBook" asp-controller="Home">
+	<form asp-action="SaveBook" asp-controller="Home" enctype="multipart/form-data">
 		@if (errors != null && errors.Count > 0)
 		{
 			<div class="mb-5 alert alert-danger">
@@ -74,7 +74,7 @@
 				}
 
 				<div style="width: 100%">
-					<input name="image" class="form-control" type="file" accept="image/*" />
+					<input name="Image" class="form-control" type="file" accept="image/*" />
 				</div>
 			</div>
 		</div>

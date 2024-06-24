@@ -212,7 +212,8 @@ namespace WebClient.Controllers
 
         public async Task<IActionResult> DeleteBook(int id)
         {
-            await bookstoreApiService.DeleteBookAsync(id);
+            await bookstoreApiService.DeleteLoansByBookIdAsync(id);
+			await bookstoreApiService.DeleteBookAsync(id);
             return RedirectToAction("Index");
         }
 

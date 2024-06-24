@@ -21,7 +21,7 @@ namespace Service.Controllers
 
         [HttpGet("{id}")]
         [SwaggerOperation(OperationId = "GetAuthor")]
-        public async Task<IActionResult> GetAuthor(int id)
+        public async Task<ActionResult<Author?>> GetAuthor(int id)
         {
             var book = await _authorService.GetAuthorById(id);
 

@@ -8,8 +8,8 @@ using DesktopClient.Models;
 using DesktopClient.Services;
 using Wpf.Ui;
 using LibraryCLient.Models;
-using PresentationDesktop;
 using System.Net.Http;
+using PresentationDesktop;
 
 namespace DesktopClient;
 

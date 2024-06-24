@@ -21,7 +21,7 @@ namespace Service.Controllers
 
         [HttpGet("{id}")]
         [SwaggerOperation(OperationId = "GetGenre")]
-        public async Task<IActionResult> GetGenre(int id)
+        public async Task<ActionResult<Genre?>> GetGenre(int id)
         {
             var book = await _genreService.GetGenreById(id);
 

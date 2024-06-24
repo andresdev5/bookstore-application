@@ -10,5 +10,6 @@ namespace Service.Services
 		Task<List<Loan>> FindLoans(Func<Loan, Boolean> callback);
 		Task<bool> AddLoan(LoanRequestModel loan);
 		Task<bool> UpdateLoan(LoanRequestModel loan);
+		Task<bool> DeleteLoans(Func<Loan, Boolean> callback);
 	}
 }

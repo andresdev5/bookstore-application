@@ -85,5 +85,17 @@ namespace Service.Services
 
 			return _loanRepository.Update(entity);
 		}
+
+		public async Task<bool> DeleteLoans(Func<Loan, Boolean> callback)
+		{
+			var loans = await Task.Run(() => _loanRepository.FindAll(callback));
+
+			foreach (var loan in loans)
+			{
+				await Task.Run(() => _loanRepository.Delete(loan));
+			}
+
+			return true;
+		}
 	}
 }

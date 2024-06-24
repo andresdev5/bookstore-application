@@ -21,7 +21,7 @@ namespace Service.Controllers
 
 		[HttpGet("{id}")]
 		[SwaggerOperation(OperationId = "GetLoan")]
-		public async Task<IActionResult> GetLoan(int id)
+		public async Task<ActionResult<Loan?>> GetLoan(int id)
 		{
 			var book = await _loanService.GetLoanById(id);
 
@@ -43,6 +43,26 @@ namespace Service.Controllers
 				return (!bookId.HasValue || l.BookId == bookId.Value)
 					&& (identificationNumber == null || l.IdentificationNumber == identificationNumber)
 					&& l.Status == status;
+			});
+		}
+
+		[HttpGet("/api/Loans/SearchByBookId")]
+		[SwaggerOperation(OperationId = "SearchLoansByBookId")]
+		public async Task<IEnumerable<Loan>> SearchLoansByBookId(int bookId)
+		{
+			return await _loanService.FindLoans(l =>
+			{
+				return l.BookId == bookId;
+			});
+		}
+
+		[HttpGet("/api/Loans/DeleteLoansByBookId")]
+		[SwaggerOperation(OperationId = "DeleteLoansByBookId")]
+		public async Task<Boolean> DeleteLoansByBookId(int bookId)
+		{
+			return await _loanService.DeleteLoans(l =>
+			{
+				return l.BookId == bookId;
 			});
 		}
 
