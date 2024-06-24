@@ -14,5 +14,7 @@ namespace Service.Services
         Task<bool> UpdateAuthor(AuthorRequestModel book);
 
         Task<bool> DeleteAuthor(Author author);
+
+        Task<List<Author>> SearchAuthors(string query);
     }
 }

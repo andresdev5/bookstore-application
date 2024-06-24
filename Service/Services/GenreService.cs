@@ -55,5 +55,14 @@ namespace Service.Services
         {
             return await Task.Run(() => _genreRepository.Delete(genre));
         }
+
+        public async Task<List<Genre>> SearchGenres(string query)
+        {
+            return await Task.Run(() =>
+            {
+                return _genreRepository.FindAll(g => g.Name != null 
+                    && g.Name.Trim().Contains(query.Trim(), StringComparison.CurrentCultureIgnoreCase));
+            });
+        }
     }
 }

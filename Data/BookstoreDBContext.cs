@@ -16,6 +16,7 @@ namespace Data
         public DbSet<Models.Author> Authors { get; set; }
         public DbSet<Models.Genre> Genres { get; set; }
         public DbSet<Models.BookGenre> BookGenres { get; set; }
+        public DbSet<Models.Loan> Loans { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,7 +24,9 @@ namespace Data
 
             modelBuilder.Entity<Models.Book>().Navigation(e => e.Author).AutoInclude();
             modelBuilder.Entity<Models.Book>().Navigation(e => e.Genres).AutoInclude();
+            modelBuilder.Entity<Models.Loan>().Navigation(l => l.Book).AutoInclude();
 
+            modelBuilder.Entity<Models.Loan>().HasOne(l => l.Book);
             modelBuilder.Entity<Models.Book>().HasOne(b => b.Author);
             modelBuilder.Entity<Models.Book>()
                 .HasMany(b => b.Genres)

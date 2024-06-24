@@ -122,7 +122,7 @@ namespace DesktopClient.ViewModels
 
         private async Task LoadAuthors()
         {
-            var authors = await _bookstoreApiService.AuthorsAllAsync();
+            var authors = await _bookstoreApiService.GetAuthorsAsync();
 
             Application.Current.Dispatcher.Invoke((Delegate)(() =>
             {
@@ -137,7 +137,7 @@ namespace DesktopClient.ViewModels
 
         private async Task LoadGenres()
         {
-            var genres = await _bookstoreApiService.GenresAllAsync();
+            var genres = await _bookstoreApiService.GetGenresAsync();
 
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -362,7 +362,7 @@ namespace DesktopClient.ViewModels
 
             try
             {
-                await _bookstoreApiService.BooksPUTAsync(bookModel);
+                await _bookstoreApiService.UpdateBookAsync(bookModel);
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Title = string.Empty;

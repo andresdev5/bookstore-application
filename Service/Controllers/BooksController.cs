@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Models;
 using Service.Services;
+using Swashbuckle.AspNetCore.Annotations;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,28 +16,31 @@ namespace Service.Controllers
 
         // GET: api/<BooksController>
         [HttpGet]
-        public async Task<IEnumerable<Book>> Get()
+        [SwaggerOperation(OperationId = "GetBooks")]
+        public async Task<IEnumerable<Book>> GetBooks()
         {
             return await _bookService.GetAllBooks();
         }
 
         // GET api/<BooksController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [SwaggerOperation(OperationId = "GetBook")]
+        public async Task<Book?> GetBook(int id)
         {
-            var book = await _bookService.GetBookById(id);
+            return await _bookService.GetBookById(id);
+        }
 
-            if (book == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(book);
+        [HttpGet("/api/Books/Search")]
+        [SwaggerOperation(OperationId = "SearchBooks")]
+        public async Task<IEnumerable<Book>> SearchBooks(string query)
+        {
+            return await _bookService.SearchBooks(query);
         }
 
         // POST api/<BooksController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] BookRequestModel value)
+        [SwaggerOperation(OperationId = "AddBook")]
+        public async Task<IActionResult> AddBook([FromBody] BookRequestModel value)
         {
             try
             {
@@ -57,7 +61,8 @@ namespace Service.Controllers
 
         // PUT api/<BooksController>/5
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] BookRequestModel value)
+        [SwaggerOperation(OperationId = "UpdateBook")]
+        public async Task<IActionResult> UpdateBook([FromBody] BookRequestModel value)
         {
             bool success = await _bookService.UpdateBook(value);
 
@@ -71,7 +76,8 @@ namespace Service.Controllers
 
         // DELETE api/<BooksController>/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [SwaggerOperation(OperationId = "DeleteBook")]
+        public async Task<IActionResult> DeleteBook(int id)
         {
             var book = await _bookService.GetBookById(id);
 

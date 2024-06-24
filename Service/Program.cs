@@ -12,7 +12,10 @@ var _cors = "CorsPolicy";
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.EnableAnnotations();
+});
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(_cors,
@@ -27,6 +30,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<ILoanService, LoanService>();
 
 var app = builder.Build();
 

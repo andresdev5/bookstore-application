@@ -14,5 +14,7 @@ namespace Service.Services
         Task<bool> UpdateBook(BookRequestModel book);
 
         Task<bool> DeleteBook(Book book);
+
+        Task<List<Book>> SearchBooks(string query);
     }
 }

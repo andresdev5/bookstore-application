@@ -72,5 +72,10 @@ namespace Business
 
             return _repository.Delete(entity);
         }
+
+        virtual public List<T> FindAll(Func<T, bool> callback)
+        {
+            return Repository.Entity.Where(callback).ToList();
+        }
     }
 }

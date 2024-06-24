@@ -93,7 +93,7 @@ namespace DesktopClient.ViewModels
 
         private async void LoadAuthors()
         {
-            var authors = await _bookstoreApiService.AuthorsAllAsync();
+            var authors = await _bookstoreApiService.GetAuthorsAsync();
 
             Application.Current.Dispatcher.Invoke((Delegate)(() =>
             {
@@ -108,7 +108,7 @@ namespace DesktopClient.ViewModels
 
         private async void LoadGenres()
         {
-            var genres = await _bookstoreApiService.GenresAllAsync();
+            var genres = await _bookstoreApiService.GetGenresAsync();
 
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -232,7 +232,8 @@ namespace DesktopClient.ViewModels
             {
                 snackbarService.Show(
                     "Error",
-                    "Ha ocurrido un error al agregar el libro!",
+                    "Ha ocurrido un error al agregar el libro:\n\n"
+                    + ex.Message,
                     ControlAppearance.Caution,
                     new SymbolIcon(SymbolRegular.Book24),
                     TimeSpan.FromSeconds(2)
@@ -295,7 +296,7 @@ namespace DesktopClient.ViewModels
 
             try
             {
-                await _bookstoreApiService.BooksPOSTAsync(bookModel);
+                await _bookstoreApiService.AddBookAsync(bookModel);
 
                 Title = string.Empty;
                 Isbn = string.Empty;

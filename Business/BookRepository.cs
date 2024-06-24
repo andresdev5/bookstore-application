@@ -11,6 +11,16 @@ namespace Business
 {
     public class BookRepository : BaseRepository<Book>
     {
+        public override List<Book> FindAll(Func<Book, bool> callback)
+		{
+			return Build(["Author", "Genres"]).Where(callback).ToList();
+		}
+
+        public override Book? FindById(params object[] id)
+        {
+            return Build(["Author", "Genres"]).Where(b => b.Id == (int)id[0]).FirstOrDefault();
+        }
+
         public override bool Update(Book entity)
         {
             List<Genre> genres = [.. entity.Genres];

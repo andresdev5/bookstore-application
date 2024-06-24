@@ -26,7 +26,7 @@ namespace Service.Services
 
         public async Task<List<Book>> GetAllBooks()
         {
-            return await Task.Run(() => _bookRepository.GetAll());
+            return await Task.Run(() => _bookRepository.GetAll().OrderByDescending(x => x.Id).ToList());
         }
 
         public async Task<Book?> GetBookById(int id)
@@ -148,6 +148,19 @@ namespace Service.Services
             {
                 return await Task.Run(() => _bookRepository.Create(newBook));
             }
+        }
+
+        public async Task<List<Book>> SearchBooks(string query)
+        {
+            return await Task.Run(() => _bookRepository.FindAll(book =>
+            {
+                if (book.Title == null)
+                {
+                    return false;
+                }
+
+                return book.Title.Contains(query.ToLower().Trim(), StringComparison.CurrentCultureIgnoreCase);
+            }));
         }
 
         private string UploadBookImage(BookRequestModel book)

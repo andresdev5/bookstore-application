@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Models;
 using Service.Services;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Service.Controllers
 {
@@ -12,13 +13,15 @@ namespace Service.Controllers
         private readonly IAuthorService _authorService = bookService;
 
         [HttpGet]
-        public async Task<IEnumerable<Author>> Get()
+        [SwaggerOperation(OperationId = "GetAuthors")]
+        public async Task<IEnumerable<Author>> GetAuthors()
         {
             return await _authorService.GetAllAuthors();
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [SwaggerOperation(OperationId = "GetAuthor")]
+        public async Task<IActionResult> GetAuthor(int id)
         {
             var book = await _authorService.GetAuthorById(id);
 
@@ -30,8 +33,17 @@ namespace Service.Controllers
             return Ok(book);
         }
 
+        [HttpGet("/api/Authors/Search")]
+        [SwaggerOperation(OperationId = "SearchAuthors")]
+
+        public async Task<IEnumerable<Author>> SearchAuthors(string query)
+        {
+            return await _authorService.SearchAuthors(query);
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] AuthorRequestModel author)
+        [SwaggerOperation(OperationId = "AddAuthor")]
+        public async Task<IActionResult> AddAuthor([FromBody] AuthorRequestModel author)
         {
             try
             {
@@ -51,7 +63,8 @@ namespace Service.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] AuthorRequestModel author)
+        [SwaggerOperation(OperationId = "UpdateAuthor")]
+        public async Task<IActionResult> UpdateAuthor([FromBody] AuthorRequestModel author)
         {
             bool success = await _authorService.UpdateAuthor(author);
 
@@ -64,7 +77,8 @@ namespace Service.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [SwaggerOperation(OperationId = "DeleteAuthor")]
+        public async Task<IActionResult> DeleteAuthor(int id)
         {
             var author = await _authorService.GetAuthorById(id);
 

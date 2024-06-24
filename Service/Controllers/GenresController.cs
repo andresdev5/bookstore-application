@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Models;
 using Service.Services;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace Service.Controllers
 {
@@ -12,13 +13,15 @@ namespace Service.Controllers
         private readonly IGenreService _genreService = genreService;
 
         [HttpGet]
-        public async Task<IEnumerable<Genre>> Get()
+        [SwaggerOperation(OperationId = "GetGenres")]
+        public async Task<IEnumerable<Genre>> GetGenres()
         {
             return await _genreService.GetAllGenres();
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [SwaggerOperation(OperationId = "GetGenre")]
+        public async Task<IActionResult> GetGenre(int id)
         {
             var book = await _genreService.GetGenreById(id);
 
@@ -30,8 +33,17 @@ namespace Service.Controllers
             return Ok(book);
         }
 
+        [HttpGet("/api/Genres/Search")]
+        [SwaggerOperation(OperationId = "SearchGenres")]
+
+        public async Task<IEnumerable<Genre>> SearchGenres(string query)
+        {
+            return await _genreService.SearchGenres(query);
+        }
+
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] GenreRequestModel genre)
+        [SwaggerOperation(OperationId = "AddGenre")]
+        public async Task<IActionResult> AddGenre([FromBody] GenreRequestModel genre)
         {
             try
             {
@@ -51,7 +63,8 @@ namespace Service.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Put([FromBody] GenreRequestModel genre)
+        [SwaggerOperation(OperationId = "UpdateGenre")]
+        public async Task<IActionResult> UpdateGenre([FromBody] GenreRequestModel genre)
         {
             bool success = await _genreService.UpdateGenre(genre);
 
@@ -64,7 +77,8 @@ namespace Service.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [SwaggerOperation(OperationId = "DeleteGenre")]
+        public async Task<IActionResult> DeleteGenre(int id)
         {
             var genre = await _genreService.GetGenreById(id);
 

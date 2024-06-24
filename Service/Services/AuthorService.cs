@@ -61,5 +61,21 @@ namespace Service.Services
         {
             return await Task.Run(() => _authorRepository.Delete(author));
         }
+
+        public async Task<List<Author>> SearchAuthors(string query)
+        {
+            return await Task.Run(() => _authorRepository.FindAll(author =>
+            {
+                List<string> fields = [author.Firstname, author.Lastname, author.Pseudonym];
+                fields.RemoveAll(x => x == null);
+
+                if (fields.Count == 0)
+                {
+                    return false;
+                }
+
+                return fields.Any(x => x.Trim().Contains(query.Trim()));
+            }));
+        }
     }
 }

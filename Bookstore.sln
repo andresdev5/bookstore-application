@@ -11,9 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationDesktop", "Desk
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PresentationWeb", "WebClient\PresentationWeb.csproj", "{697E50AE-F391-4F1A-AB63-F34C44FDEA12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{1A4338D2-F822-4EA1-B272-A8B40EEB42EC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{01992F22-DF51-41A3-983C-37BFC95F1087}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{1A4338D2-F822-4EA1-B272-A8B40EEB42EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +39,6 @@ Global
 		{1A4338D2-F822-4EA1-B272-A8B40EEB42EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A4338D2-F822-4EA1-B272-A8B40EEB42EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A4338D2-F822-4EA1-B272-A8B40EEB42EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01992F22-DF51-41A3-983C-37BFC95F1087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01992F22-DF51-41A3-983C-37BFC95F1087}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01992F22-DF51-41A3-983C-37BFC95F1087}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01992F22-DF51-41A3-983C-37BFC95F1087}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

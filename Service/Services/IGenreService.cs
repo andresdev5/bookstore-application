@@ -14,5 +14,7 @@ namespace Service.Services
         Task<bool> UpdateGenre(GenreRequestModel book);
 
         Task<bool> DeleteGenre(Genre genre);
+
+        Task<List<Genre>> SearchGenres(string query);
     }
 }
