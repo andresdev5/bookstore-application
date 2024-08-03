@@ -9,4 +9,4 @@ Aplicación simple para gestionar un catálogo personal de libros desarrollado p
 
 ### Web client
 
-![Web client](https://raw.githubusercontent.com/andresdev5/bookstore-application/main/.resources/web-client.png)
+![Web client](https://raw.githubusercontent.com/andresdev5/bookstore-application/main/.resources/web-client-upd.png)
