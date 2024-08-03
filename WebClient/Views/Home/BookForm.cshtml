@@ -46,6 +46,7 @@
 		<div class="form-group mb-3 d-flex flex-column">
 			<label>Autor</label>
 			<select class="form-select" name="AuthorId" required>
+				<option value="">Seleccione un autor</option>
 				@foreach (var author in vm!.Authors)
 				{
 					<option 

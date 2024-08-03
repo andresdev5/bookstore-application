@@ -86,6 +86,12 @@ namespace WebClient.Controllers
                 errors.Add("El código ISBN es necesario");
             }
 
+            // regex validation ISBN
+            if (data.Isbn != null && !Regex.Match(data.Isbn, "^(?=(?:\\D*\\d){10}(?:(?:\\D*\\d){3})?$)[\\d-]+$").Success)
+			{
+				errors.Add("El código ISBN es incorrecto");
+			}
+
             if (data.Year <= 0)
             {
                 errors.Add("El año es necesario y debe ser mayor a 0");
@@ -117,8 +123,18 @@ namespace WebClient.Controllers
 			{
 				using (var ms = new MemoryStream())
 				{
-					data.Image.CopyTo(ms);
-					imageBytes = ms.ToArray();
+                    if (data.Image.ContentType != "image/jpeg" 
+                        && data.Image.ContentType != "image/png" 
+                        && data.Image.ContentType != "image/gif" 
+                        && data.Image.ContentType != "image/webp")
+					{
+						errors.Add("El formato de la imagen no es válido");
+					}
+                    else
+                    {
+						data.Image.CopyTo(ms);
+						imageBytes = ms.ToArray();
+					}
 				}
 			}
 
